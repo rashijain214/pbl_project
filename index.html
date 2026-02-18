@@ -206,17 +206,26 @@ datasets:[{data:[0.8877,0.9737,0.9857,0.9921,0.9921,0.9997]}]},
 options:{plugins:{legend:{display:false}},scales:{y:{beginAtZero:true}}}
 });
 
-let sec=0;
-function startTimer(){
-setInterval(()=>{
-sec++;
-let m=Math.floor(sec/60);
-let s=sec%60;
-document.getElementById('displayTime').innerText=
-`${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
-},1000);
-}
-</script>
+ let sec = 0;
+        let timer = null;
+        function startTimer() {
+            timer = setInterval(() => {
+                sec++;
+                let m = Math.floor(sec / 60);
+                let s = sec % 60;
+                document.getElementById('displayTime').innerText = `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+                
+                if (sec >= 480 && sec < 600) { // 8-10 Mins Warning
+                    document.getElementById('timerContainer').classList.add('timer-warning');
+                    document.getElementById('timerIcon').classList.replace('fa-hourglass-start', 'fa-hourglass-half');
+                } else if (sec >= 600) { // 10 Mins Stop
+                    clearInterval(timer);
+                    document.getElementById('timerContainer').classList.replace('timer-warning', 'timer-stop');
+                    document.getElementById('displayTime').innerText = "10:00";
+                    document.getElementById('timerIcon').classList.replace('fa-hourglass-half', 'fa-hourglass-end');
+                }
+            }, 1000);
+        }
 
 </body>
 </html>
