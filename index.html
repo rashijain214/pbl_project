@@ -25,13 +25,33 @@ body { background:#020617; color:#f8fafc; font-family:'Plus Jakarta Sans',sans-s
 <!-- TIMER -->
 <div id="timerContainer" class="fixed bottom-10 right-10 px-8 py-4 rounded-3xl flex gap-4">
 <i class="fas fa-hourglass-start text-blue-600 text-2xl"></i>
-<span id="displayTime" class="text-4xl font-black font-mono">00:00</span>
+<span id="d
+  isplayTime" class="text-4xl font-black font-mono">00:00</span>
 </div>
+  <nav class="fixed w-full z-50 glass border-b border-slate-800/50 px-8 py-4 flex justify-between items-center">
+        <div class="flex items-center gap-4">
+            <div class="bg-white p-1 rounded flex items-center justify-center shadow-md" style="height: 48px; width: 48px;">
+                <img src="mujlogo.jpg" alt="MUJ" class="h-full w-auto object-contain" onerror="this.src='https://via.placeholder.com/50?text=MUJ'">
+            </div>
+            <div class="flex flex-col text-left">
+                <span class="text-xl font-black text-white leading-none uppercase tracking-tighter">PBL <span class="text-blue-500 italic">2026</span></span>
+                <span class="text-[9px] text-slate-400 font-bold uppercase tracking-widest mt-1">Dept. of Computer Science & Engineering</span>
+            </div>
+        </div>
+        <div class="hidden md:flex gap-8 text-[11px] uppercase tracking-widest font-bold opacity-70">
+            <a href="#problem" class="hover:text-blue-400 transition">Problem</a>
+            <a href="#methodology" class="hover:text-blue-400 transition">Methodology</a>
+            <a href="#results" class="hover:text-blue-400 transition">Results</a>
+            <a href="#team" class="hover:text-blue-400 transition">Team</a>
+        </div>
+    </nav>
 
 <main class="max-w-6xl mx-auto px-6 pt-32 pb-32 space-y-32">
 
 <!-- TITLE -->
 <section class="text-center">
+  
+            <div class="inline-block px-4 py-1 border border-slate-800 rounded-full text-slate-500 text-[10px] font-mono mb-6 uppercase tracking-widest">ID: 23FE10CSE00411</div>
 <h1 class="text-6xl font-extrabold uppercase">
 <span class="gradient-text">AI Powered Early Disaster Warning System</span>
 </h1>
@@ -191,6 +211,20 @@ Best Model: LightGBM
 Machine learning can significantly improve early disaster prediction systems and help save lives through timely alerts.
 </p>
 </section>
+  <section id="team" class="text-center pt-10 border-t border-slate-900">
+            <h2 class="text-[10px] font-black text-slate-600 uppercase tracking-[0.5em] mb-12">Academic Credits</h2>
+            <div class="flex flex-wrap justify-center gap-10">
+                <div class="glass px-12 py-8 rounded-[2rem] border-b-4 border-blue-600">
+                    <p class="text-[9px] font-bold text-blue-500 mb-2 uppercase tracking-widest">Project Guide</p>
+                    <p class="font-black text-xl text-slate-100">[Guide Name]</p>
+                </div>
+                <div class="glass px-12 py-8 rounded-[2rem] border-b-4 border-slate-700">
+                    <p class="text-[9px] font-bold text-slate-400 mb-2 uppercase tracking-widest">Team Member 1</p>
+                    <p class="font-black text-xl text-slate-100">[Student Name]</p>
+                    <p class="text-[10px] text-slate-500 mt-1">[Reg No]</p>
+                </div>
+            </div>
+        </section>
 
 </main>
 
