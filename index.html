@@ -12,7 +12,7 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
 
-body { background:#020617; color:#f8fafc; font-family:'Plus Jakarta Sans',sans-serif; }
+body { background:#020617; color:#f8fafc; font-family:'Plus Jakarta Sans',sans-serif; scroll-behavior:smooth; }
 .glass { background:rgba(255,255,255,0.03); backdrop-filter:blur(15px); border:1px solid rgba(255,255,255,0.1); }
 .gradient-text { background:linear-gradient(90deg,#60a5fa,#a855f7); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
 
@@ -22,6 +22,7 @@ body { background:#020617; color:#f8fafc; font-family:'Plus Jakarta Sans',sans-s
 
 <body onload="startTimer()">
 
+<!-- TIMER -->
 <div id="timerContainer" class="fixed bottom-10 right-10 px-8 py-4 rounded-3xl flex gap-4">
 <i class="fas fa-hourglass-start text-blue-600 text-2xl"></i>
 <span id="displayTime" class="text-4xl font-black font-mono">00:00</span>
@@ -32,7 +33,7 @@ body { background:#020617; color:#f8fafc; font-family:'Plus Jakarta Sans',sans-s
 <!-- TITLE -->
 <section class="text-center">
 <h1 class="text-6xl font-extrabold uppercase">
-<span class="gradient-text">Early Disaster Warning System using ML</span>
+<span class="gradient-text">AI Powered Early Disaster Warning System</span>
 </h1>
 
 <p class="text-slate-400 mt-6 max-w-3xl mx-auto text-lg">
@@ -53,8 +54,8 @@ India and many developing regions suffer huge losses due to natural disasters be
 <h2 class="text-3xl font-bold mb-4">Research Gap</h2>
 <ul class="text-slate-400 text-sm space-y-2">
 <li>• Existing systems lack real-time ML prediction</li>
-<li>• Single hazard models (only flood or only wildfire)</li>
-<li>• Low recall for rare disaster events</li>
+<li>• Single hazard models only</li>
+<li>• Low recall for rare events</li>
 <li>• Poor generalization across regions</li>
 </ul>
 </div>
@@ -62,25 +63,25 @@ India and many developing regions suffer huge losses due to natural disasters be
 
 <!-- LITERATURE -->
 <section class="glass p-10 rounded-3xl">
-<h2 class="text-3xl font-bold mb-6 text-center">Literature Review (Recent Work)</h2>
+<h2 class="text-3xl font-bold mb-6 text-center">Literature Review</h2>
 
 <ul class="text-slate-400 text-sm space-y-3">
-<li>• Nearing et al. (2023) – AI-based global flood forecasting system with large-scale hydrological datasets.</li>
-<li>• Zeng & Bertsimas (2023) – multimodal machine learning for global flood prediction using satellite + weather data.</li>
-<li>• Bhowmik & Cabral (2022) – ML-based wildfire early warning and risk modeling.</li>
+<li>• Nearing et al. (2023) – AI-based global flood forecasting</li>
+<li>• Zeng & Bertsimas (2023) – multimodal flood prediction ML</li>
+<li>• Bhowmik & Cabral (2022) – ML wildfire prediction systems</li>
 </ul>
 
 <p class="mt-6 text-slate-500 text-sm italic">
-Our system improves on these by combining multiple disaster types into a single unified ML prediction pipeline.
+Our system improves these by combining multiple disasters in one unified ML pipeline.
 </p>
 </section>
 
-<!-- DATASET -->
+<!-- DATA -->
 <section class="grid md:grid-cols-3 gap-8">
 <div class="glass p-6 rounded-3xl">
 <h3 class="font-bold text-blue-400 mb-3">Input Features</h3>
 <p class="text-sm text-slate-400">
-Temperature, rainfall, humidity, wind speed, soil moisture, pressure, seismic activity.
+Temperature, rainfall, humidity, wind speed, soil moisture, pressure, seismic activity
 </p>
 </div>
 
@@ -94,7 +95,7 @@ Binary classification: 0 = Safe, 1 = Disaster Risk
 <div class="glass p-6 rounded-3xl">
 <h3 class="font-bold text-green-400 mb-3">Preprocessing</h3>
 <p class="text-sm text-slate-400">
-Data cleaning, normalization, label encoding, class balancing, train-test split (80-20)
+Cleaning, normalization, label encoding, class balancing, train-test split
 </p>
 </div>
 </section>
@@ -104,7 +105,7 @@ Data cleaning, normalization, label encoding, class balancing, train-test split 
 <h2 class="text-3xl font-bold mb-6 text-center">System Methodology</h2>
 
 <p class="text-slate-400 text-sm mb-6">
-1. Data Collection → 2. Data Preprocessing → 3. Feature Engineering → 4. Model Training → 5. Evaluation → 6. Early Warning Output
+Data Collection → Preprocessing → Feature Engineering → Model Training → Evaluation → Early Warning Output
 </p>
 
 <div class="grid md:grid-cols-2 gap-6 text-sm text-slate-400">
@@ -114,28 +115,34 @@ Data cleaning, normalization, label encoding, class balancing, train-test split 
 <li>• LightGBM</li>
 <li>• Random Forest</li>
 <li>• XGBoost</li>
-<li>• Support Vector Machine</li>
+<li>• SVM</li>
 <li>• Logistic Regression</li>
 <li>• KNN</li>
 </ul>
 </div>
 
 <div>
-<h4 class="text-purple-400 font-bold mb-2">Evaluation Metrics</h4>
+<h4 class="text-purple-400 font-bold mb-2">Metrics</h4>
 <ul>
 <li>• Accuracy</li>
 <li>• Precision</li>
-<li>• Recall (important for disasters)</li>
+<li>• Recall (critical)</li>
 <li>• F1 Score</li>
 <li>• ROC-AUC</li>
 </ul>
 </div>
 </div>
+
+<div class="text-center mt-8">
+<a href="https://colab.research.google.com/drive/1IMod_uIdoUqR71DN4CtdPjGkDC2sp8Yl#scrollTo=53faa7fb" target="_blank" class="px-8 py-3 bg-green-600 rounded-full font-bold text-sm shadow-lg">
+VIEW CODE
+</a>
+</div>
 </section>
 
 <!-- RESULTS -->
 <section class="glass p-10 rounded-3xl">
-<h2 class="text-3xl font-bold text-center mb-10">Results & Performance</h2>
+<h2 class="text-3xl font-bold text-center mb-10">Results</h2>
 
 <div class="grid md:grid-cols-2 gap-10 items-center">
 <div class="h-80"><canvas id="resultsChart"></canvas></div>
@@ -149,7 +156,7 @@ Data cleaning, normalization, label encoding, class balancing, train-test split 
 <p>KNN – 88.77%</p>
 
 <p class="text-blue-400 font-bold mt-4">
-Best Model: LightGBM (highest recall for early detection)
+Best Model: LightGBM
 </p>
 </div>
 </div>
@@ -158,11 +165,10 @@ Best Model: LightGBM (highest recall for early detection)
 <!-- IMPACT -->
 <section class="glass p-10 rounded-3xl">
 <h2 class="text-3xl font-bold text-center mb-6">Real World Impact</h2>
-
 <ul class="text-slate-400 text-sm space-y-2">
 <li>• Early evacuation alerts</li>
 <li>• Government disaster planning</li>
-<li>• Smart city safety integration</li>
+<li>• Smart city integration</li>
 <li>• Reduced economic and human loss</li>
 </ul>
 </section>
@@ -170,12 +176,11 @@ Best Model: LightGBM (highest recall for early detection)
 <!-- FUTURE -->
 <section class="glass p-10 rounded-3xl">
 <h2 class="text-3xl font-bold text-center mb-6">Future Scope</h2>
-
 <ul class="text-slate-400 text-sm space-y-2">
-<li>• Real-time IoT sensor data integration</li>
-<li>• Satellite imagery analysis</li>
-<li>• Deep learning time-series forecasting</li>
-<li>• Mobile alert application deployment</li>
+<li>• IoT sensor data integration</li>
+<li>• Satellite imagery ML</li>
+<li>• Deep learning time series models</li>
+<li>• Mobile alert app</li>
 </ul>
 </section>
 
@@ -183,7 +188,7 @@ Best Model: LightGBM (highest recall for early detection)
 <section class="text-center">
 <h2 class="text-3xl font-bold mb-4">Conclusion</h2>
 <p class="text-slate-400 max-w-3xl mx-auto">
-This project successfully demonstrates that machine learning can significantly improve early disaster prediction systems. By integrating multiple models and environmental parameters, our system achieves high recall and can help save lives by issuing timely alerts.
+Machine learning can significantly improve early disaster prediction systems and help save lives through timely alerts.
 </p>
 </section>
 
@@ -193,10 +198,8 @@ This project successfully demonstrates that machine learning can significantly i
 const ctx = document.getElementById('resultsChart').getContext('2d');
 new Chart(ctx,{
 type:'bar',
-data:{
-labels:['KNN','LogReg','SVM','RF','XGB','LGBM'],
-datasets:[{data:[0.8877,0.9737,0.9857,0.9921,0.9921,0.9997]}]
-},
+data:{labels:['KNN','LogReg','SVM','RF','XGB','LGBM'],
+datasets:[{data:[0.8877,0.9737,0.9857,0.9921,0.9921,0.9997]}]},
 options:{plugins:{legend:{display:false}},scales:{y:{beginAtZero:true}}}
 });
 
