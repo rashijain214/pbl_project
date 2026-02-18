@@ -13,6 +13,7 @@ This project implements an AI/ML-based system to predict and provide early warni
 ├── dataset.csv
 ├── PBL_Review_Paper_rashi.pdf
 ├── README.md
+├── index.html
 ```
 
 ## Features
