@@ -1,154 +1,188 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PBL Presentation | Early Disaster Warning System</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
-        body { background-color: #020617; color: #f8fafc; font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
-        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1); }
-        .gradient-text { background: linear-gradient(90deg, #60a5fa, #a855f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PBL Presentation | Early Disaster Warning System</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
+
+body { background-color: #020617; color: #f8fafc; font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
+.glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1); }
+.gradient-text { background: linear-gradient(90deg, #60a5fa, #a855f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+#timerContainer { background: #ffffff; color: #020617; box-shadow: 0 10px 40px rgba(0,0,0,0.8); border: 3px solid #3b82f6; z-index: 1000; }
+@keyframes flicker { 0%,100%{background:#fff;}50%{background:#fca5a5;} }
+.timer-warning { animation:flicker 1s infinite; border:3px solid #ef4444!important; color:#b91c1c!important; }
+.timer-stop { background:#991b1b!important; color:#fff!important; border:3px solid #f87171!important; }
+</style>
 </head>
 
-<body>
+<body onload="startTimer()">
 
-<main class="max-w-6xl mx-auto px-6 pt-32 pb-20 space-y-32">
+<!-- TIMER -->
+<div id="timerContainer" class="fixed bottom-10 right-10 px-8 py-4 rounded-3xl flex items-center gap-4">
+<i class="fas fa-hourglass-start text-blue-600 text-2xl" id="timerIcon"></i>
+<span id="displayTime" class="text-4xl font-black font-mono">00:00</span>
+</div>
 
+<!-- NAVBAR -->
+<nav class="fixed w-full z-50 glass border-b border-slate-800/50 px-8 py-4 flex justify-between items-center">
+<div class="flex items-center gap-4">
+<div class="bg-white p-1 rounded shadow-md" style="height:48px;width:48px;">
+<img src="mujlogo.jpg" alt="MUJ" class="h-full w-auto object-contain">
+</div>
+<div>
+<span class="text-xl font-black uppercase">PBL <span class="text-blue-500">2026</span></span>
+<p class="text-[9px] text-slate-400 uppercase">Dept. of Computer Science & Engineering</p>
+</div>
+</div>
+
+<div class="hidden md:flex gap-8 text-[11px] uppercase font-bold">
+<a href="#problem">Problem</a>
+<a href="#methodology">Methodology</a>
+<a href="#results">Results</a>
+<a href="#team">Team</a>
+</div>
+</nav>
+
+<main class="max-w-6xl mx-auto px-6 pt-48 pb-32 space-y-32">
+
+<!-- HEADER -->
 <section class="text-center">
-    <div class="inline-block px-4 py-1 border border-slate-800 rounded-full text-slate-500 text-[10px] font-mono mb-6 uppercase tracking-widest">ID: 23FE10CSE00411</div>
-    <h1 class="text-6xl md:text-7xl font-extrabold mb-8 uppercase leading-tight">
-        <span class="gradient-text">Early Disaster Warning System using ML</span>
-    </h1>
-    <p class="text-slate-400 max-w-2xl mx-auto italic text-lg leading-relaxed border-l-2 border-blue-500/30 pl-6 text-left">
-        "To build a predictive machine learning system capable of identifying early warning signs of natural disasters using historical environmental datasets to minimize damage and loss of life."
-    </p>
+<div class="inline-block px-4 py-1 border border-slate-800 rounded-full text-slate-500 text-[10px] font-mono mb-6 uppercase tracking-widest">
+ID: 23FE10CSE00411
+</div>
+
+<h1 class="text-6xl md:text-7xl font-extrabold mb-8 uppercase">
+<span class="gradient-text">Early Disaster Warning System using ML</span>
+</h1>
+
+<p class="text-slate-400 max-w-2xl mx-auto italic text-lg border-l-2 border-blue-500/30 pl-6 text-left">
+To build a predictive ML system that detects early warning signals of floods, earthquakes, storms, and other disasters using historical environmental data.
+</p>
 </section>
 
-<section id="problem" class="grid md:grid-cols-2 gap-12 items-stretch">
-    <div class="glass p-10 rounded-[2.5rem] flex flex-col justify-center border-l-4 border-blue-600">
-        <h2 class="text-3xl font-extrabold mb-6">Problem Statement</h2>
-        <p class="text-slate-400 leading-relaxed text-justify">
-            Natural disasters such as floods, earthquakes, and cyclones cause massive damage due to delayed detection and response. 
-            Current systems are reactive rather than predictive. This project builds an ML-based early warning system to detect disaster signals in advance.
-        </p>
-    </div>
+<!-- PROBLEM -->
+<section id="problem" class="grid md:grid-cols-2 gap-12">
+<div class="glass p-10 rounded-[2.5rem] border-l-4 border-blue-600">
+<h2 class="text-3xl font-extrabold mb-6">Problem Statement</h2>
+<p class="text-slate-400">
+Current disaster systems are reactive and respond after damage occurs. There is a need for predictive ML-based systems to provide early warnings and reduce loss of life and infrastructure damage.
+</p>
+</div>
 
-    <div class="space-y-6">
-        <div class="glass p-7 rounded-3xl border-r-4 border-blue-500/50">
-            <h3 class="text-blue-400 font-bold text-xs uppercase tracking-widest mb-2">Literature Review</h3>
-            <p class="text-sm text-slate-500 italic">
-                Existing systems rely on threshold-based detection and satellite monitoring, lacking real-time ML prediction capabilities.
-            </p>
-        </div>
-        <div class="glass p-7 rounded-3xl border-r-4 border-purple-500/50">
-            <h3 class="text-purple-400 font-bold text-xs uppercase tracking-widest mb-2">Innovation</h3>
-            <p class="text-sm text-slate-500 italic">
-                Our system integrates multiple ML models and dynamically adjusts thresholds to improve prediction accuracy and recall.
-            </p>
-        </div>
-    </div>
+<div class="space-y-6">
+<div class="glass p-7 rounded-3xl border-r-4 border-blue-500/50">
+<h3 class="text-blue-400 font-bold text-xs uppercase">Literature Review</h3>
+<p class="text-sm text-slate-500 italic">
+Existing systems use satellite and threshold-based monitoring with limited ML prediction capability.
+</p>
+</div>
+
+<div class="glass p-7 rounded-3xl border-r-4 border-purple-500/50">
+<h3 class="text-purple-400 font-bold text-xs uppercase">Innovation</h3>
+<p class="text-sm text-slate-500 italic">
+Our system integrates multiple ML models with dynamic threshold tuning for higher recall and early alerts.
+</p>
+</div>
+</div>
 </section>
 
-<section id="methodology" class="space-y-12">
-    <h2 class="text-4xl font-black text-center uppercase tracking-tight">
-        System <span class="text-blue-500">Methodology</span>
-    </h2>
+<!-- METHODOLOGY -->
+<section id="methodology">
+<h2 class="text-4xl font-black text-center mb-12">System <span class="text-blue-500">Methodology</span></h2>
 
-    <div class="grid md:grid-cols-3 gap-8">
-        <div class="glass p-8 rounded-3xl text-center">
-            <i class="fas fa-database text-blue-500 text-3xl mb-4"></i>
-            <h3 class="font-bold mb-2 uppercase text-xs tracking-widest">Dataset</h3>
-            <p class="text-sm text-slate-500">
-                dataset.csv containing environmental, weather, and geological parameters with preprocessing and normalization applied.
-            </p>
-        </div>
+<div class="grid md:grid-cols-3 gap-8">
+<div class="glass p-8 rounded-3xl text-center">
+<i class="fas fa-database text-blue-500 text-3xl mb-4"></i>
+<p class="text-sm text-slate-500">Environmental, weather & geological dataset with preprocessing</p>
+</div>
 
-        <div class="glass p-8 rounded-3xl text-center">
-            <i class="fas fa-microchip text-purple-500 text-3xl mb-4"></i>
-            <h3 class="font-bold mb-2 uppercase text-xs tracking-widest">Models Used</h3>
-            <p class="text-sm text-slate-500">
-                LightGBM, Random Forest, Logistic Regression, KNN, SVM, XGBoost
-            </p>
-        </div>
+<div class="glass p-8 rounded-3xl text-center">
+<i class="fas fa-microchip text-purple-500 text-3xl mb-4"></i>
+<p class="text-sm text-slate-500">LightGBM, RF, XGBoost, SVM, Logistic Regression, KNN</p>
+</div>
 
-        <div class="glass p-8 rounded-3xl text-center border-2 border-green-500/20 bg-green-500/5">
-            <i class="fab fa-python text-green-500 text-3xl mb-4"></i>
-            <h3 class="font-bold mb-4 uppercase text-xs tracking-widest text-green-400">Execution</h3>
-            <a href="#" class="px-6 py-2 bg-green-600 rounded-full text-[10px] font-black hover:bg-green-500 transition shadow-lg">
-                VIEW MODEL CODE
-            </a>
-        </div>
-    </div>
+<div class="glass p-8 rounded-3xl text-center border-2 border-green-500/20">
+<i class="fab fa-python text-green-500 text-3xl mb-4"></i>
+<a href="#" class="px-6 py-2 bg-green-600 rounded-full text-[10px] font-black">VIEW CODE</a>
+</div>
+</div>
 </section>
 
+<!-- RESULTS -->
 <section id="results" class="glass p-12 rounded-[3.5rem] border-t-4 border-blue-500">
-    <h2 class="text-3xl font-black mb-12 text-center uppercase tracking-tight">
-        Results & <span class="text-blue-500">Analysis</span>
-    </h2>
+<h2 class="text-3xl font-black mb-12 text-center">Results & Analysis</h2>
 
-    <div class="grid md:grid-cols-2 gap-16 items-center">
-        <div class="h-80"><canvas id="resultsChart"></canvas></div>
+<div class="grid md:grid-cols-2 gap-16 items-center">
+<div class="h-80"><canvas id="resultsChart"></canvas></div>
 
-        <div class="space-y-6 text-sm text-slate-400">
-            <p><b>LightGBM:</b> Accuracy 0.9997 | Precision 0.9977 | Recall 1.0000</p>
-            <p><b>Random Forest:</b> Accuracy 0.9921 | F1 Score 0.9745</p>
-            <p><b>XGBoost:</b> Accuracy 0.9921 | F1 Score 0.9745</p>
-            <p><b>SVM:</b> Accuracy 0.9857 | F1 Score 0.9523</p>
-            <p><b>Logistic Regression:</b> Accuracy 0.9737</p>
-            <p><b>KNN:</b> Accuracy 0.8877 (lowest performance)</p>
+<div class="space-y-3 text-sm text-slate-400">
+<p>LightGBM: 0.9997</p>
+<p>Random Forest: 0.9921</p>
+<p>XGBoost: 0.9921</p>
+<p>SVM: 0.9857</p>
+<p>Logistic Regression: 0.9737</p>
+<p>KNN: 0.8877</p>
 
-            <div class="text-blue-400 font-bold text-lg mt-6">
-                Best Model: LightGBM (Highest accuracy & recall)
-            </div>
-        </div>
-    </div>
+<div class="text-blue-400 font-bold text-lg mt-4">
+Best Model: LightGBM
+</div>
+</div>
+</div>
 </section>
 
-<section id="team" class="text-center pt-10 border-t border-slate-900">
-    <h2 class="text-[10px] font-black text-slate-600 uppercase tracking-[0.5em] mb-12">
-        Academic Credits
-    </h2>
+<!-- TEAM -->
+<section id="team" class="text-center">
+<h2 class="text-xs text-slate-500 mb-10 uppercase">Academic Credits</h2>
 
-    <div class="flex flex-wrap justify-center gap-10">
-        <div class="glass px-12 py-8 rounded-[2rem] border-b-4 border-blue-600">
-            <p class="text-[9px] font-bold text-blue-500 mb-2 uppercase tracking-widest">Project Guide</p>
-            <p class="font-black text-xl text-slate-100">Babita Tiwari</p>
-        </div>
+<div class="flex justify-center gap-10">
+<div class="glass px-12 py-8 rounded-2xl border-b-4 border-blue-600">
+<p class="text-xs text-blue-500 uppercase">Guide</p>
+<p class="text-xl font-bold">Babita Tiwari</p>
+</div>
 
-        <div class="glass px-12 py-8 rounded-[2rem] border-b-4 border-slate-700">
-            <p class="text-[9px] font-bold text-slate-400 mb-2 uppercase tracking-widest">Student</p>
-            <p class="font-black text-xl text-slate-100">Rashi Jain</p>
-        </div>
-    </div>
+<div class="glass px-12 py-8 rounded-2xl border-b-4 border-slate-700">
+<p class="text-xs text-slate-400 uppercase">Student</p>
+<p class="text-xl font-bold">Rashi Jain</p>
+<p class="text-xs text-slate-500">23FE10CSE00411</p>
+</div>
+</div>
 </section>
 
 </main>
 
+<!-- CHART -->
 <script>
 const ctx = document.getElementById('resultsChart').getContext('2d');
-new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: ['KNN','LogReg','SVM','RF','XGBoost','LightGBM'],
-        datasets: [{
-            label: 'Accuracy',
-            data: [0.8877,0.9737,0.9857,0.9921,0.9921,0.9997],
-            borderRadius: 12
-        }]
-    },
-    options: {
-        responsive: true,
-        plugins: { legend: { display: false } },
-        scales: {
-            y: { beginAtZero: true },
-        }
-    }
+new Chart(ctx,{
+type:'bar',
+data:{
+labels:['KNN','LogReg','SVM','RF','XGBoost','LightGBM'],
+datasets:[{
+data:[0.8877,0.9737,0.9857,0.9921,0.9921,0.9997],
+borderRadius:12
+}]
+},
+options:{plugins:{legend:{display:false}},scales:{y:{beginAtZero:true}}}
 });
+
+let sec=0;
+function startTimer(){
+setInterval(()=>{
+sec++;
+let m=Math.floor(sec/60);
+let s=sec%60;
+document.getElementById('displayTime').innerText=
+`${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
+},1000);
+}
 </script>
 
 </body>
